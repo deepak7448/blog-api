@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path,include
 from django.conf.urls import url,re_path
+#from allauth.account.views import LoginView
 from dj_rest_auth.registration.views import RegisterView,VerifyEmailView,ConfirmEmailView
 from dj_rest_auth.views import LoginView,LogoutView,PasswordResetView,PasswordResetConfirmView,PasswordChangeView
 from rest_framework_simplejwt.views import TokenVerifyView,TokenObtainPairView,TokenRefreshView
