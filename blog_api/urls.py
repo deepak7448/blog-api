@@ -3,10 +3,9 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path,include
 from django.conf.urls import url,re_path
-#from allauth.account.views import LoginView
 from dj_rest_auth.registration.views import RegisterView,VerifyEmailView,ConfirmEmailView
 from dj_rest_auth.views import LoginView,LogoutView,PasswordResetView,PasswordResetConfirmView,PasswordChangeView
-from rest_framework_simplejwt.views import TokenVerifyView
+from rest_framework_simplejwt.views import TokenVerifyView,TokenObtainPairView,TokenRefreshView
 from dj_rest_auth.jwt_auth import get_refresh_view
 
 urlpatterns = [
@@ -26,10 +25,7 @@ urlpatterns = [
     path('account/password-reset-confirm/<uidb64>/<token>/',PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('token/refresh/', get_refresh_view().as_view(), name='token_refresh'),
-    path('accounts/', include('dj_rest_auth.urls')),
-    #path('accounts/registration/', include('dj_rest_auth.registration.urls'))
-
-    #path('accounts/', include('allauth.urls')),  
+  
 ]
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
